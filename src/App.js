@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./App.css";
+import QuoteEstimation from "./quoteestimation"; // Correctly importing QuoteEstimation component
 
 const App = () => {
   const [appointmentDate, setAppointmentDate] = useState(new Date());
@@ -30,20 +31,6 @@ const App = () => {
     alert("Appointment Submitted!");
   };
 
-  const allowDrop = (event) => {
-    event.preventDefault();
-  };
-
-  const drag = (event) => {
-    event.dataTransfer.setData("text", event.target.id);
-  };
-
-  const drop = (event) => {
-    event.preventDefault();
-    const data = event.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(data));
-  };
-
   return (
     <div className="container">
       {/* Navbar */}
@@ -65,8 +52,9 @@ const App = () => {
         </nav>
       </header>
 
-      {/* Design a Driveway Section */}
+      {/* Main Content */}
       <main>
+        {/* Design a Driveway Section */}
         <section id="design-a-driveway">
           <h2>DESIGN YOUR DRIVEWAY IN JUST A FEW STEPS</h2>
           <div className="driveway-img">
@@ -83,36 +71,6 @@ const App = () => {
             <div>
               <button className="nav-bar__button">Patterns</button>
             </div>
-          </div>
-        </section>
-
-        {/* Customized Tileset Section */}
-        <section id="customized-tileset">
-          <h2>YOUR CUSTOMIZED TILESET</h2>
-          <div
-            id="getData"
-            onDrop={drop}
-            onDragOver={allowDrop}
-            style={{
-              width: "250px",
-              height: "200px",
-              padding: "10px",
-              border: "1px solid #4f4d4d",
-              marginBottom: "48px",
-            }}
-          ></div>
-          <br />
-          <img
-            id="dragData"
-            src="https://th.bing.com/th/id/OIP.je6n41edd5mw-EG9OXG4owHaE8?rs=1&pid=ImgDetMain"
-            draggable="true"
-            onDragStart={drag}
-            width="250"
-            height="200"
-            alt="draggable"
-          />
-          <div>
-            <button className="dragData__button">Upload</button>
           </div>
         </section>
 
@@ -196,6 +154,11 @@ const App = () => {
               </form>
             </section>
           </div>
+        </section>
+
+        {/* Quote Estimation Section */}
+        <section id="quote-estimation">
+          <QuoteEstimation material={{ costPerSqFt: 5 }} />
         </section>
       </main>
     </div>
