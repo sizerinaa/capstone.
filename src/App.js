@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./App.css";
-import QuoteEstimation from "./quoteestimation"; // Correctly importing QuoteEstimation component
+import QuoteEstimation from "./quoteestimation"; 
 
 const App = () => {
   const [appointmentDate, setAppointmentDate] = useState(new Date());
@@ -52,7 +52,6 @@ const App = () => {
         </nav>
       </header>
 
-      {/* Main Content */}
       <main>
         {/* Design a Driveway Section */}
         <section id="design-a-driveway">
@@ -106,7 +105,6 @@ const App = () => {
               </div>
             </section>
 
-            {/* Contact Form Section */}
             <section className="contact-form-section">
               <h2>Contact Information</h2>
               <form onSubmit={handleSubmit}>
@@ -156,7 +154,6 @@ const App = () => {
           </div>
         </section>
 
-        {/* Quote Estimation Section */}
         <section id="quote-estimation">
           <QuoteEstimation material={{ costPerSqFt: 5 }} />
         </section>

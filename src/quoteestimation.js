@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import "./App.css"; 
-import "./App.js"; 
+import "./App.css";
+import "./App.js";
 
 const QuoteEstimation = ({ material }) => {
   const [area, setArea] = useState(0);
-  const [selectedColors, setSelectedColors] = useState([]);
-  const [selectedPattern, setSelectedPattern] = useState("");
   const [totalCost, setTotalCost] = useState(0);
 
-  const colorOptions = ["White", "Red", "Black", "Blue", "Green"];
-  const patternOptions = ["Classic Brick", "Herringbone", "Basket Weave"];
   const preparationFee = 150;
   const wasteDisposalFee = 100;
 
@@ -17,34 +13,17 @@ const QuoteEstimation = ({ material }) => {
     setArea(e.target.value);
   };
 
-  const handleColorChange = (color) => {
-    setSelectedColors((prevColors) =>
-      prevColors.includes(color)
-        ? prevColors.filter((c) => c !== color)
-        : [...prevColors, color]
-    );
-  };
-
-  const handlePatternChange = (pattern) => {
-    setSelectedPattern(pattern);
-  };
-
   const calculateCost = () => {
-    if (!area || !selectedPattern || selectedColors.length === 0) {
-      alert("Please fill in all required fields to calculate the cost.");
+    if (!area) {
+      alert("Please enter a valid area to calculate the cost.");
       return;
     }
 
     const materialCost = material.costPerSqFt * area;
-    const colorCost = selectedColors.length * 1 * area;
     const installationCost = 3.5 * area * 1.2;
 
     const total =
-      materialCost +
-      colorCost +
-      installationCost +
-      preparationFee +
-      wasteDisposalFee;
+      materialCost + installationCost + preparationFee + wasteDisposalFee;
 
     setTotalCost(total);
   };
@@ -65,19 +44,10 @@ const QuoteEstimation = ({ material }) => {
         <tbody>
           <tr>
             <td>Material</td>
-            <td>
-              Rubber Tileset ({selectedPattern || "Select a Pattern"})
-            </td>
+            <td>Rubber Tileset</td>
             <td>${material.costPerSqFt}/sq ft</td>
             <td>{area} sq ft</td>
             <td>${(material.costPerSqFt * area).toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td>Accent Colors</td>
-            <td>{selectedColors.join(", ") || "Select Colors"}</td>
-            <td>$1.00/sq ft</td>
-            <td>{area} sq ft</td>
-            <td>${(selectedColors.length * 1 * area).toFixed(2)}</td>
           </tr>
           <tr>
             <td>Installation</td>
@@ -115,33 +85,6 @@ const QuoteEstimation = ({ material }) => {
             value={area}
             onChange={handleAreaChange}
           />
-        </div>
-        <div className="form-group">
-          <label>Select Accent Colors:</label>
-          {colorOptions.map((color) => (
-            <div key={color}>
-              <input
-                type="checkbox"
-                checked={selectedColors.includes(color)}
-                onChange={() => handleColorChange(color)}
-              />
-              <label>{color}</label>
-            </div>
-          ))}
-        </div>
-        <div className="form-group">
-          <label>Select Pattern:</label>
-          <select
-            value={selectedPattern}
-            onChange={(e) => handlePatternChange(e.target.value)}
-          >
-            <option value="">-- Select Pattern --</option>
-            {patternOptions.map((pattern) => (
-              <option key={pattern} value={pattern}>
-                {pattern}
-              </option>
-            ))}
-          </select>
         </div>
         <button onClick={calculateCost} className="calculate-button">
           Calculate Total Cost
