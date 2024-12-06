@@ -194,7 +194,7 @@ body {
   text-align: center;
   font-size: 24px;
   font-weight: 600;
-  color: #00274d;
+  color: #7ba43a;
   margin-bottom: 30px;
 }
 
@@ -213,7 +213,7 @@ body {
 }
 
 .quote-table th {
-  background-color: #00274d;
+  background-color: #7ba43a;
   color: #fff;
   font-weight: 600;
 }
@@ -234,7 +234,7 @@ body {
   font-weight: bold;
 }
 
-/* Form */
+/* Form Section */
 .form-section {
   margin-top: 20px;
 }
@@ -263,7 +263,7 @@ body {
 
 .form-group input:focus {
   outline: none;
-  border-color: #00274d;
+  border-color: #7ba43a;
   box-shadow: 0 0 5px rgba(0, 39, 77, 0.2);
 }
 
@@ -289,14 +289,14 @@ body {
 
 .color-button.selected,
 .pattern-button.selected {
-  background-color: #00274d;
+  background-color: #7ba43a;
   color: white;
-  border-color: #00274d;
+  border-color: #7ba43a;
 }
 
 .color-button:hover,
 .pattern-button:hover {
-  background-color: #00274d;
+  background-color: #7ba43a;
   color: white;
 }
 
@@ -306,7 +306,7 @@ body {
   width: 100%;
   padding: 12px;
   margin-top: 15px;
-  background-color: #00274d;
+  background-color: #7ba43a;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -317,7 +317,7 @@ body {
 }
 
 .calculate-button:hover {
-  background-color: #00509e;
+  background-color: #aee25b;
 }
 
 .go-back-button {
